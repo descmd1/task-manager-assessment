@@ -1,4 +1,3 @@
-# task-manager-assessment
 # Task Management App
 
 ## Overview
@@ -37,10 +36,11 @@ This is a task management application that allows users to manage their tasks by
    git clone https://github.com/your-username/task-management-app.git
    cd task-management-app
    
-## run npm install to install the dependencies
+## Install
+ - run npm install to install the dependencies
 
-## run npm install -g json-server to access the backend
+ - run npm install -g json-server to access the backend
 
-## json-server --watch db.json --port 3001  to start the backend
+ - json-server --watch db.json --port 3001  to start the backend
 
-## run npm start to start the project.
+ - run npm start to start the project.
