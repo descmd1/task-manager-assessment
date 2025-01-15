@@ -1,0 +1,39 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Sample Task 1",
+      "description": "This is a work task",
+      "category": "Work",
+      "completed": false
+    },
+    {
+      "id": "2",
+      "title": "Sample Task 2",
+      "description": "This is a personal task for week 2",
+      "category": "Personal",
+      "completed": false
+    },
+    {
+      "id": "bed2",
+      "title": "meet us",
+      "description": "at your regular time",
+      "category": "Work",
+      "completed": false
+    },
+    {
+      "id": "6b47",
+      "title": "hththhhhh",
+      "description": "ttthdngjgj",
+      "category": "Work",
+      "completed": false
+    },
+    {
+      "id": "237b",
+      "title": "black",
+      "description": "black black",
+      "category": "Work",
+      "completed": false
+    }
+  ]
+}
