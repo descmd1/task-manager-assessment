@@ -33,7 +33,7 @@ This is a task management application that allows users to manage their tasks by
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/task-management-app.git
+   git clone https:https://github.com/descmd1/task-manager-assessment.git
    cd task-management-app
    
 ## Install
