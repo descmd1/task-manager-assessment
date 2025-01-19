@@ -39,7 +39,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ addTask }) => {
             onChange={(e) => setTitle(e.target.value)}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm 
             focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white
-             text-black dark:bg-darkBg dark:text-darkText"
+             text-black dark:bg-gray-800 dark:text-darkText"
           />
         </div>
 
@@ -58,7 +58,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ addTask }) => {
             onChange={(e) => setDescription(e.target.value)}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm 
             focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-black
-             dark:bg-darkBg dark:text-darkText"
+             dark:bg-gray-800 dark:text-darkText"
           ></textarea>
         </div>
 
@@ -76,7 +76,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ addTask }) => {
             onChange={(e) => setCategory(e.target.value as Task['category'])}
            className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm 
            focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white
-            text-black dark:bg-darkBg dark:text-darkText"
+            text-black dark:bg-gray-800 dark:text-darkText"
           >
             <option value="Work">Work</option>
             <option value="Personal">Personal</option>
