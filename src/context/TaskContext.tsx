@@ -34,7 +34,7 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [darkMode, setDarkMode] = useState<boolean>(false);
-  const API_URL = "http://localhost:3001/tasks";
+  const API_URL = "https://my-task-manager-api.vercel.app/api/tasks";
 
   useEffect(() => {
     const storedTasks = localStorage.getItem("tasks");
