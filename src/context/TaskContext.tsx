@@ -29,9 +29,7 @@ export const TaskContext = createContext<TaskContextProps | undefined>(
   undefined
 );
 
-export const TaskProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+export const TaskProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const API_URL = "https://my-task-manager-api.vercel.app/api/tasks";
@@ -79,7 +77,7 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({
         });
       });
   };
-  
+
   const deleteTask = (_id: string) => {
     axios
       .delete(`${API_URL}/${_id}`)
@@ -104,10 +102,10 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({
         });
       });
   };
-  
+
   const toggleCompletion = (_id: string) => {
     const updatedTasks = tasks.map((task) =>
-      task.id === _id ? { ...task, completed: !task.completed } : task
+      task._id === _id ? { ...task, completed: !task.completed } : task
     );
     setTasks(updatedTasks);
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
@@ -119,20 +117,32 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({
       showConfirmButton: false,
     });
   };
-  
+
   const editTask = (_id: string, updatedTask: Task) => {
-    const updatedTasks = tasks.map((task) =>
-      task.id === _id ? updatedTask : task
-    );
-    setTasks(updatedTasks);
-    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-    Swal.fire({
-      icon: "success",
-      title: "Task Edited",
-      text: "The task has been updated successfully!",
-      timer: 2000,
-      showConfirmButton: false,
-    });
+    axios
+      .put(`${API_URL}/${_id}`, updatedTask)
+      .then(() => {
+        const updatedTasks = tasks.map((task) =>
+          task._id === _id ? updatedTask : task
+        );
+        setTasks(updatedTasks);
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+        Swal.fire({
+          icon: "success",
+          title: "Task Edited",
+          text: "The task has been updated successfully!",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      })
+      .catch((error) => {
+        console.error("Error editing task:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Failed to Edit Task",
+          text: "An error occurred while editing the task.",
+        });
+      });
   };
 
   const reorderTasks = (updatedTasks: Task[]) => {
