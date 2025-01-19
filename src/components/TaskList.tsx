@@ -21,14 +21,10 @@ const TaskList: React.FC<TaskListProps> = ({
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState("");
   const [editDescription, setEditDescription] = useState("");
-  const [editCategory, setEditCategory] = useState<
-    "Work" | "Personal" | "Urgent"
-  >("Work");
+  const [editCategory, setEditCategory] = useState<"Work" | "Personal" | "Urgent">("Work");
   const [editTaskId, setEditTaskId] = useState<string | null>(null);
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<
-    "Work" | "Personal" | "Urgent" | "All"
-  >("All");
+  const [selectedCategory, setSelectedCategory] = useState<"Work" | "Personal" | "Urgent" | "All">("All");
 
   const API_URL = "https://my-task-manager-api.vercel.app/api/tasks";
 
@@ -198,50 +194,49 @@ const TaskList: React.FC<TaskListProps> = ({
       </DragDropContext>
 
       {/* Edit Modal */}
-      {/* Edit Modal */}
-{isEditing && (
-  <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center dark:bg-gray-800 dark:text-white">
-    <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md border dark:bg-gray-800 dark:text-white">
-      <h3 className="text-lg font-bold mb-4">Edit Task</h3>
-      <input
-        type="text"
-        value={editTitle}
-        onChange={(e) => setEditTitle(e.target.value)}
-        placeholder="Title"
-        className="w-full p-2 border border-gray-300 rounded-md mb-4 dark:bg-gray-700 dark:text-white"
-      />
-      <textarea
-        value={editDescription}
-        onChange={(e) => setEditDescription(e.target.value)}
-        placeholder="Description"
-        className="w-full p-2 border border-gray-300 rounded-md mb-4 dark:bg-gray-700 dark:text-white"
-      />
-      <select
-        value={editCategory}
-        onChange={(e) => setEditCategory(e.target.value as "Work" | "Personal" | "Urgent")}
-        className="w-full p-2 border border-gray-300 rounded-md mb-4 dark:bg-gray-700 dark:text-white"
-      >
-        <option value="Work">Work</option>
-        <option value="Personal">Personal</option>
-        <option value="Urgent">Urgent</option>
-      </select>
-      <div className="flex gap-2 justify-end">
-        <button
-          onClick={handleSaveEdit}
-          className="px-4 py-2 bg-blue-500 text-white rounded-md dark:bg-blue-400"
-        >
-          Save
-        </button>
-        <button
-          onClick={handleCancelEdit}
-          className="px-4 py-2 bg-gray-300 text-black rounded-md dark:bg-gray-600 dark:text-white"
-        >
-          Cancel
-        </button>
-      </div>
-    </div>
-  </div>
-)}
+      {isEditing && (
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center dark:bg-gray-800 dark:text-white">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md border dark:bg-gray-800 dark:text-white">
+            <h3 className="text-lg font-bold mb-4">Edit Task</h3>
+            <input
+              type="text"
+              value={editTitle}
+              onChange={(e) => setEditTitle(e.target.value)}
+              placeholder="Title"
+              className="w-full p-2 border border-gray-300 rounded-md mb-4 dark:bg-gray-700 dark:text-white"
+            />
+            <textarea
+              value={editDescription}
+              onChange={(e) => setEditDescription(e.target.value)}
+              placeholder="Description"
+              className="w-full p-2 border border-gray-300 rounded-md mb-4 dark:bg-gray-700 dark:text-white"
+            />
+            <select
+              value={editCategory}
+              onChange={(e) => setEditCategory(e.target.value as "Work" | "Personal" | "Urgent")}
+              className="w-full p-2 border border-gray-300 rounded-md mb-4 dark:bg-gray-700 dark:text-white"
+            >
+              <option value="Work">Work</option>
+              <option value="Personal">Personal</option>
+              <option value="Urgent">Urgent</option>
+            </select>
+            <div className="flex justify-between">
+              <button
+                onClick={handleCancelEdit}
+                className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 dark:bg-gray-700 dark:hover:bg-gray-800"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSaveEdit}
+                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
