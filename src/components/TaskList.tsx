@@ -5,10 +5,10 @@ import axios from "axios";
 
 interface TaskListProps {
   tasks: Task[];
-  toggleCompletion: (id: string) => void;
-  deleteTask: (id: string) => void;
+  toggleCompletion: (_id: string) => void;
+  deleteTask: (_id: string) => void;
   reorderTasks: (tasks: Task[]) => void;
-  editTask: (id: string, updatedTask: Task) => void;
+  editTask: (_id: string, updatedTask: Task) => void;
 }
 
 const TaskList: React.FC<TaskListProps> = ({
@@ -80,12 +80,12 @@ const TaskList: React.FC<TaskListProps> = ({
 
     updatedTasks.forEach((task) => {
       axios
-        .put(`${API_URL}/${task.id}`, task)
+        .put(`${API_URL}/${task._id}`, task)
         .then(() => {
-          console.log(`Task with ID ${task.id} updated successfully!`);
+          console.log(`Task with ID ${task._id} updated successfully!`);
         })
         .catch((error) => {
-          console.error(`Error updating task with ID ${task.id}:`, error);
+          console.error(`Error updating task with ID ${task._id}:`, error);
         });
     });
   };
@@ -144,7 +144,7 @@ const TaskList: React.FC<TaskListProps> = ({
               className="space-y-4"
             >
               {filteredTasks.map((task, index) => (
-                <Draggable key={task.id} draggableId={task.id} index={index}>
+                <Draggable key={task._id} draggableId={task._id} index={index}>
                   {(provided) => (
                     <li
                       ref={provided.innerRef}
@@ -164,7 +164,7 @@ const TaskList: React.FC<TaskListProps> = ({
                       </p>
                       <div className="flex items-center gap-2 mt-2">
                         <button
-                          onClick={() => toggleCompletion(task.id)}
+                          onClick={() => toggleCompletion(task._id)}
                           className="px-2 py-1 text-white text-sm font-medium rounded-md 
                           transition-colors duration-300 bg-blue-500 hover:bg-blue-600
                            dark:bg-blue-400 dark:hover:bg-blue-700"
@@ -172,7 +172,7 @@ const TaskList: React.FC<TaskListProps> = ({
                           {task.completed ? "Ongoing" : "Completed"}
                         </button>
                         <button
-                          onClick={() => deleteTask(task.id)}
+                          onClick={() => deleteTask(task._id)}
                           className="px-2 py-1 text-white text-sm font-medium rounded-md transition-colors 
                           duration-300 bg-red-500 hover:bg-red-600 dark:bg-red-400 dark:hover:bg-red-700"
                         >
