@@ -43,7 +43,7 @@ const TaskList: React.FC<TaskListProps> = ({
   const handleSaveEdit = () => {
     if (editTaskId) {
       const updatedTask = {
-        id: editTaskId,
+        _id: editTaskId,
         title: editTitle,
         description: editDescription,
         category: editCategory,
