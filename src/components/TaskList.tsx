@@ -37,7 +37,7 @@ const TaskList: React.FC<TaskListProps> = ({
     setEditTitle(task.title);
     setEditDescription(task.description);
     setEditCategory(task.category);
-    setEditTaskId(task.id);
+    setEditTaskId(task._id);
   };
 
   const handleSaveEdit = () => {
