@@ -114,7 +114,7 @@ const TaskList: React.FC<TaskListProps> = ({
           onChange={(e) => setSearchKeyword(e.target.value)}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm 
           focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-black
-           dark:bg-darkBg dark:text-darkText"
+           dark:bg-gray-800 dark:text-darkText"
         />
         <select
           value={selectedCategory}
@@ -125,7 +125,7 @@ const TaskList: React.FC<TaskListProps> = ({
           }
           className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm 
           focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-black
-           dark:bg-darkBg dark:text-darkText"
+           dark:bg-gray-800 dark:text-darkText"
         >
           <option value="All">All</option>
           <option value="Work">Work</option>
@@ -199,8 +199,8 @@ const TaskList: React.FC<TaskListProps> = ({
 
       {/* Edit Modal */}
       {isEditing && (
-        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center dark:bg-gray-800 darK:text-white">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md dark:bg-gray-800 dark:text-white">
             <h3 className="text-lg font-bold mb-4">Edit Task</h3>
             <input
               type="text"
@@ -208,14 +208,14 @@ const TaskList: React.FC<TaskListProps> = ({
               onChange={(e) => setEditTitle(e.target.value)}
               placeholder="Title"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm 
-              focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+              focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4 dark:bg-gray-800 darK:text-white"
             />
             <textarea
               value={editDescription}
               onChange={(e) => setEditDescription(e.target.value)}
               placeholder="Description"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm 
-              focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+              focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4 dark:bg-gray-800 dark:text-white"
             ></textarea>
             <select
               value={editCategory}
@@ -225,7 +225,7 @@ const TaskList: React.FC<TaskListProps> = ({
                 )
               }
               className="w-full px-4 py-2 border border-gray-300 rounded-lg 
-              shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+              shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4 dark:bg-gray-800 dark:text-white"
             >
               <option value="Work">Work</option>
               <option value="Personal">Personal</option>
