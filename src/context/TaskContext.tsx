@@ -3,7 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 export interface Task {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   category: "Work" | "Personal" | "Urgent";
@@ -17,10 +17,10 @@ interface TaskContextProps {
     description: string,
     category: Task["category"]
   ) => void;
-  deleteTask: (id: string) => void;
-  toggleCompletion: (id: string) => void;
+  deleteTask: (_id: string) => void;
+  toggleCompletion: (_id: string) => void;
   reorderTasks: (updatedTasks: Task[]) => void;
-  editTask: (id: string, updatedTask: Task) => void;
+  editTask: (_id: string, updatedTask: Task) => void;
   darkMode: boolean;
   toggleDarkMode: () => void;
 }
@@ -82,9 +82,9 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({
   
   const deleteTask = (id: string) => {
     axios
-      .delete(`${API_URL}/${id}`)
+      .delete(`${API_URL}/${_id}`)
       .then(() => {
-        const updatedTasks = tasks.filter((task) => task.id !== id);
+        const updatedTasks = tasks.filter((task) => task.id !== _id);
         setTasks(updatedTasks);
         localStorage.setItem("tasks", JSON.stringify(updatedTasks));
         Swal.fire({
@@ -105,9 +105,9 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({
       });
   };
   
-  const toggleCompletion = (id: string) => {
+  const toggleCompletion = (_id: string) => {
     const updatedTasks = tasks.map((task) =>
-      task.id === id ? { ...task, completed: !task.completed } : task
+      task.id === _id ? { ...task, completed: !task.completed } : task
     );
     setTasks(updatedTasks);
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
@@ -122,7 +122,7 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({
   
   const editTask = (id: string, updatedTask: Task) => {
     const updatedTasks = tasks.map((task) =>
-      task.id === id ? updatedTask : task
+      task.id === _id ? updatedTask : task
     );
     setTasks(updatedTasks);
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
@@ -139,8 +139,8 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({
     setTasks(updatedTasks);
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     updatedTasks.forEach((task) => {
-      axios.put(`${API_URL}/${task.id}`, task).catch((error) => {
-        console.error(`Error updating task with ID ${task.id}:`, error);
+      axios.put(`${API_URL}/${task._id}`, task).catch((error) => {
+        console.error(`Error updating task with ID ${task._id}:`, error);
       });
     });
   };
