@@ -80,11 +80,11 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({
       });
   };
   
-  const deleteTask = (id: string) => {
+  const deleteTask = (_id: string) => {
     axios
       .delete(`${API_URL}/${_id}`)
       .then(() => {
-        const updatedTasks = tasks.filter((task) => task.id !== _id);
+        const updatedTasks = tasks.filter((task) => task._id !== _id);
         setTasks(updatedTasks);
         localStorage.setItem("tasks", JSON.stringify(updatedTasks));
         Swal.fire({
@@ -120,7 +120,7 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({
     });
   };
   
-  const editTask = (id: string, updatedTask: Task) => {
+  const editTask = (_id: string, updatedTask: Task) => {
     const updatedTasks = tasks.map((task) =>
       task.id === _id ? updatedTask : task
     );
