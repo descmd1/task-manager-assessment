@@ -198,58 +198,50 @@ const TaskList: React.FC<TaskListProps> = ({
       </DragDropContext>
 
       {/* Edit Modal */}
-      {isEditing && (
-        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center dark:bg-gray-800 darK:text-white">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md border dark:bg-gray-800 dark:text-white">
-            <h3 className="text-lg font-bold mb-4">Edit Task</h3>
-            <input
-              type="text"
-              value={editTitle}
-              onChange={(e) => setEditTitle(e.target.value)}
-              placeholder="Title"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm 
-              focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4 dark:bg-gray-800 darK:text-white"
-            />
-            <textarea
-              value={editDescription}
-              onChange={(e) => setEditDescription(e.target.value)}
-              placeholder="Description"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm 
-              focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4 dark:bg-gray-800 dark:text-white"
-            ></textarea>
-            <select
-              value={editCategory}
-              onChange={(e) =>
-                setEditCategory(
-                  e.target.value as "Work" | "Personal" | "Urgent"
-                )
-              }
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg 
-              shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4 dark:bg-gray-800 dark:text-white"
-            >
-              <option value="Work">Work</option>
-              <option value="Personal">Personal</option>
-              <option value="Urgent">Urgent</option>
-            </select>
-            <div className="flex justify-end gap-4">
-              <button
-                onClick={handleSaveEdit}
-                className="px-4 py-2 bg-blue-500 text-white text-sm font-medium 
-                rounded-md hover:bg-blue-600"
-              >
-                Save
-              </button>
-              <button
-                onClick={handleCancelEdit}
-                className="px-4 py-2 bg-gray-500 text-white text-sm font-medium 
-                rounded-md hover:bg-gray-600"
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Edit Modal */}
+{isEditing && (
+  <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center dark:bg-gray-800 dark:text-white">
+    <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md border dark:bg-gray-800 dark:text-white">
+      <h3 className="text-lg font-bold mb-4">Edit Task</h3>
+      <input
+        type="text"
+        value={editTitle}
+        onChange={(e) => setEditTitle(e.target.value)}
+        placeholder="Title"
+        className="w-full p-2 border border-gray-300 rounded-md mb-4 dark:bg-gray-700 dark:text-white"
+      />
+      <textarea
+        value={editDescription}
+        onChange={(e) => setEditDescription(e.target.value)}
+        placeholder="Description"
+        className="w-full p-2 border border-gray-300 rounded-md mb-4 dark:bg-gray-700 dark:text-white"
+      />
+      <select
+        value={editCategory}
+        onChange={(e) => setEditCategory(e.target.value as "Work" | "Personal" | "Urgent")}
+        className="w-full p-2 border border-gray-300 rounded-md mb-4 dark:bg-gray-700 dark:text-white"
+      >
+        <option value="Work">Work</option>
+        <option value="Personal">Personal</option>
+        <option value="Urgent">Urgent</option>
+      </select>
+      <div className="flex gap-2 justify-end">
+        <button
+          onClick={handleSaveEdit}
+          className="px-4 py-2 bg-blue-500 text-white rounded-md dark:bg-blue-400"
+        >
+          Save
+        </button>
+        <button
+          onClick={handleCancelEdit}
+          className="px-4 py-2 bg-gray-300 text-black rounded-md dark:bg-gray-600 dark:text-white"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+)}
     </section>
   );
 };
