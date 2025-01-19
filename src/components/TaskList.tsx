@@ -199,8 +199,8 @@ const TaskList: React.FC<TaskListProps> = ({
 
       {/* Edit Modal */}
       {isEditing && (
-        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center border dark:bg-gray-800 darK:text-white">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md dark:bg-gray-800 dark:text-white">
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center dark:bg-gray-800 darK:text-white">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md border dark:bg-gray-800 dark:text-white">
             <h3 className="text-lg font-bold mb-4">Edit Task</h3>
             <input
               type="text"
